@@ -61,29 +61,39 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 52.h,),
-                  Text(
-                    "Login",
-                    style: TextStyle(
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.w700,
-                      
-                    ),
-                  ),
+                  LoginText(),
                   SizedBox(height: 50.h,),
-
-                  TextField(
-                    controller: emailController,
-                    decoration: InputDecoration(
-                      labelText: "Email Address",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.r)
-                      ),
-                    ),
-                  ),
+                  emailFeild(),
                   SizedBox(height: 20.h,),
+                  passwordFeild(),
+                  SizedBox(height: 50.h,),
+                  loginButton(),
+                  SizedBox(height: 5.h,),
+                  createAccount(),
+                  loginOnPhone(),
+                ],
+              ), 
+            )
+          ],
+        )
+        ),
+    );
+  }
 
-                  TextField(
-                    
+  Widget emailFeild(){
+    return TextField(
+            controller: emailController,
+            decoration: InputDecoration(
+                  labelText: "Email Address",
+                  border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.r)
+                ),
+             ),
+         );
+  }
+  Widget passwordFeild(){
+    return TextField(
+                    obscureText: true,
                     controller: passwordController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -91,10 +101,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       labelText: "Password"
                     ),
-                  ),
-                  SizedBox(height: 50.h,),
+                  );
+  }
 
-                  SizedBox(
+  Widget loginButton(){
+    return SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: (){
@@ -106,9 +117,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                        child: Text('Login')
                        ),
-                  ),
-                   SizedBox(height: 10.h,),
-                   TextButton(
+                  );
+  }
+  Widget createAccount(){
+    return TextButton(
                     onPressed: (){
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) => SignUpScreen()
@@ -117,22 +129,26 @@ class _LoginScreenState extends State<LoginScreen> {
                      child: Text("Create an Account",style: TextStyle(
                       color: Colors.purpleAccent
                      ),),
-                     ),
-                    //SizedBox(height: 10.h,),
-                     
-                    TextButton(
+                     );
+  }
+
+  Widget loginOnPhone(){
+    return TextButton(
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => SignInWithPhone() ));
                       },
                        child: Text('Login with Phone Number',
                        style: TextStyle(color: Colors.purple) ,)
-                       ),
-                ],
-              ), 
-            )
-          ],
-        )
-        ),
-    );
+                       );
+  }
+  Widget LoginText(){
+    return Text(
+                    "Login",
+                    style: TextStyle(
+                      fontSize: 30.sp,
+                      fontWeight: FontWeight.w700,
+                      
+                    ),
+                  );
   }
 }
