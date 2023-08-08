@@ -42,20 +42,43 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: ListView(children: [
-          TextField(
-            maxLength: 6,
-            controller: otpController,
-            decoration: InputDecoration(
-              labelText: "6 Digit OTP",
-              counterText: ""
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          child: ListView(children: [
+            Text(
+                    "Verify OTP",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w700,
+                      
+                    ),
+                  ),
+                  SizedBox(height: 50,),
+            TextField(
+              maxLength: 6,
+              controller: otpController,
+              decoration: InputDecoration(
+                labelText: "6 Digit OTP",
+                counterText: "",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                )
+              ),
             ),
-          ),
-          SizedBox(height: 20,),
-          ElevatedButton(onPressed: (){
-            verifyOTP();
-          }, child: Text("Verify")),
-        ],)
+            SizedBox(height: 50,),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(onPressed: (){
+                verifyOTP();
+              },
+              style: ButtonStyle(
+                    padding: MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: 14)),
+                    backgroundColor: MaterialStatePropertyAll(Colors.purpleAccent),
+                  ),
+               child: Text("Verify")),
+            ),
+          ],),
+        )
         ),
     );
   }
